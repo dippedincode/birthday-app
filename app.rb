@@ -1,5 +1,6 @@
 require 'sinatra'
 require 'shotgun'
+require 'date'
 set :session_secret, 'super secret'
 
 get '/' do

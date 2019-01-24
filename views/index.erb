@@ -1,6 +1,9 @@
-<% if @name %>
-<h1>My name is <%= @name %></h1>
-<h3>My birthday is <%= @day %> / <%= @month %></h3>
+<%if @name %>
+<h1>Hi there <%= @name %></h1>
+<h3>Your birthday is on <%= Date::MONTHNAMES[@month.to_i] %> 
+<%= @day %><% if [1,21,31].include?(@day.to_i) %>st<% elsif [2,22].include?(@day.to_i) %>nd<% elsif [3,23].include?(@day.to_i) %>rd<% else %>th
+<% end %>
+</h3>
 <% else %>
   <form action = "/birthday" method = "post">
     Enter name: <input type = "text" name="name" /><br><br>
