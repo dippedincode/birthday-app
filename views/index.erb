@@ -1,8 +1,12 @@
 <% if @name %>
 <h1>My name is <%= @name %></h1>
+<h3>My birthday is <%= @day %> <%= @month %></h3>
 <% else %>
   <form action = "/birthday" method = "post">
-    Enter name: <input type = "text" name="name" />
+    Enter name: <input type = "text" name="name" /><br>
+    <b>When is your birthday?</b><br>
+    Enter day: <input type = "text" day="day" /><br>
+    Enter month: <input type = "text" month="month" />
     <input type="submit" value="Submit">
   </form>
 <% end %>
