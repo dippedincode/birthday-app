@@ -19,4 +19,3 @@ post '/birthday' do
   @month = params[:month]
   erb(:index)
 end
-
