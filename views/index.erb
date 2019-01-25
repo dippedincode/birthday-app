@@ -5,7 +5,14 @@
 <% end %>
 </h3>
 <h3>Today's date is <%= Date.today %></h3>
-<h3>Days between today and May 1 is <%= Date.parse("1/5/2019").mjd - Date.today.mjd %></h3>
+<h3>Number of days between today and your birthday is <%= Date.parse(@month + "/" + @day).mjd - Date.today.mjd %></h3>
+<h4>Next steps are:
+  <ul>
+    <li>handle -ve values of number above by passing the birthday date in next year</li>
+    <li>handle for case for number = 0 -  It's your birthday!</li>
+    <li>make it pretty</li>
+  </ul>
+</h4>
 <% else %>
   <form action = "/birthday" method = "post">
     Enter name: <input type = "text" name="name" value="" /><br><br>
