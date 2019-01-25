@@ -4,12 +4,14 @@
 <%= @day %><% if [1,21,31].include?(@day.to_i) %>st<% elsif [2,22].include?(@day.to_i) %>nd<% elsif [3,23].include?(@day.to_i) %>rd<% else %>th
 <% end %>
 </h3>
+<h3>Today's date is <%= Date.today %></h3>
+<h3>Days between today and May 1 is <%= Date.parse("1/5/2019").mjd - Date.today.mjd %></h3>
 <% else %>
   <form action = "/birthday" method = "post">
-    Enter name: <input type = "text" name="name" /><br><br>
+    Enter name: <input type = "text" name="name" value="" /><br><br>
     <b>When is your birthday?</b><br><br>
-    Enter day (1 - 31): <input type="number" name="day" min="1" max="31" /><br><br>
-    Enter month (1 - 12): <input type="number" name="month" min="1" max="12" /><br><br>
+    Enter day (1 - 31): <input type="number" name="day" min="1" max="31" value="1" /><br><br>
+    Enter month (1 - 12): <input type="number" name="month" min="1" max="12" value="1" /><br><br>
     <input type="submit" value="Submit">
   </form>
 <% end %>

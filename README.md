@@ -48,3 +48,5 @@ BBBBBBBBBBBBBB       TTTT  HH     HH    YYYYYYYYYYYYYYYYYYYYYYYY
 About this challenge
 --------
 This challenge is to create a web app which lets the user submit their name and birthday in a form, then presents a page either saying happy birthday if it's their birthday else how many days it will be until it's their birthday.
+
+Full details at https://github.com/makersacademy/course/blob/master/intro_to_the_web/post_challenges/birthday_app.md
