@@ -4,19 +4,21 @@
 <%= @day %><% if [1,21,31].include?(@day.to_i) %>st<% elsif [2,22].include?(@day.to_i) %>nd<% elsif [3,23].include?(@day.to_i) %>rd<% else %>th
 <% end %>
 </h3>
-<h3>Today's date is <%= Date.today.strftime("%B %e") %></h3>
+<h3>Today date is <%= Date.today.strftime("%B %e") %></h3>
 <% @days_diff = (Date.parse(@month + "/" + @day).mjd - Date.today.mjd) %>
 <% if @days_diff == 0 %>
   <h3>Yippee!! It's your birthday!</h3>
+  <iframe src="https://giphy.com/embed/26u4lwog9FVOxUGiI" width="480" height="320" 
+  frameBorder="0" class="giphy-embed" allowFullScreen></iframe>
+<% elsif @days_diff == 1 %>
+  <h3>There is 1 day to go until your next birthday. Exciting!</h3>
 <% elsif @days_diff > 0 %>
-  <h3>Number of days between today and your next birthday is 
-  <%= Date.parse(@month + "/" + @day).mjd - Date.today.mjd %></h3>
+  <h3>There are <%= @days_diff %>
+  days to go until your next birthday.</h3>
 <% else %>
-  <h3>Number of days between today and your next birthday is 
-  <%= Date.parse(@month + "/" + @day).next_year.mjd - Date.today.mjd %></h3>
+  <h3>There are <%= Date.parse(@month + "/" + @day).next_year.mjd - Date.today.mjd %>
+  days to go until your next birthday.</h3>
 <% end %>
-
-<h4>Now to make it pretty</h4>
 
 <% else %>
   <form action = "/birthday" method = "post">
