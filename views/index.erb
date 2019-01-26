@@ -4,15 +4,20 @@
 <%= @day %><% if [1,21,31].include?(@day.to_i) %>st<% elsif [2,22].include?(@day.to_i) %>nd<% elsif [3,23].include?(@day.to_i) %>rd<% else %>th
 <% end %>
 </h3>
-<h3>Today's date is <%= Date.today %></h3>
-<h3>Number of days between today and your birthday is <%= Date.parse(@month + "/" + @day).mjd - Date.today.mjd %></h3>
-<h4>Next steps are:
-  <ul>
-    <li>handle -ve values of number above by passing the birthday date in next year</li>
-    <li>handle for case for number = 0 -  It's your birthday!</li>
-    <li>make it pretty</li>
-  </ul>
-</h4>
+<h3>Today's date is <%= Date.today.strftime("%B %e") %></h3>
+<% @days_diff = (Date.parse(@month + "/" + @day).mjd - Date.today.mjd) %>
+<% if @days_diff == 0 %>
+  <h3>Yippee!! It's your birthday!</h3>
+<% elsif @days_diff > 0 %>
+  <h3>Number of days between today and your next birthday is 
+  <%= Date.parse(@month + "/" + @day).mjd - Date.today.mjd %></h3>
+<% else %>
+  <h3>Number of days between today and your next birthday is 
+  <%= Date.parse(@month + "/" + @day).next_year.mjd - Date.today.mjd %></h3>
+<% end %>
+
+<h4>Now to make it pretty</h4>
+
 <% else %>
   <form action = "/birthday" method = "post">
     Enter name: <input type = "text" name="name" value="" /><br><br>
