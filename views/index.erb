@@ -1,26 +1,31 @@
-<%if @name %>
+<center><%if @name %>
 <h1>Hi there <%= @name %></h1>
 <h3>Your birthday is on <%= Date::MONTHNAMES[@month.to_i] %> 
 <%= @day %><% if [1,21,31].include?(@day.to_i) %>st<% elsif [2,22].include?(@day.to_i) %>nd<% elsif [3,23].include?(@day.to_i) %>rd<% else %>th
 <% end %>
 </h3>
-<h3>Today date is <%= Date.today.strftime("%B %e") %></h3>
+<h3>Today is <%= Date.today.strftime("%B %e") %></h3>
 <% @days_diff = (Date.parse(@month + "/" + @day).mjd - Date.today.mjd) %>
 <% if @days_diff == 0 %>
   <h3>Yippee!! It's your birthday!</h3>
+  <body style="background-color:powderblue;">
   <iframe src="https://giphy.com/embed/26u4lwog9FVOxUGiI" width="480" height="320" 
   frameBorder="0" class="giphy-embed" allowFullScreen></iframe>
 <% elsif @days_diff == 1 %>
-  <h3>There is 1 day to go until your next birthday. Exciting!</h3>
+  <body style="background-color:lightgreen;">
+  <h3>There is 1 day to go until it's your birthday. Exciting!</h3>
 <% elsif @days_diff > 0 %>
+  <body style="background-color:lilac;">
   <h3>There are <%= @days_diff %>
-  days to go until your next birthday.</h3>
+  days to go until it's your birthday.</h3>
 <% else %>
+  <body style="background-color:lightpink;">
   <h3>There are <%= Date.parse(@month + "/" + @day).next_year.mjd - Date.today.mjd %>
-  days to go until your next birthday.</h3>
+  days to go until it's your birthday.</h3>
 <% end %>
 
 <% else %>
+<body style="background-color:beige;">
   <form action = "/birthday" method = "post">
     Enter name: <input type = "text" name="name" value="" /><br><br>
     <b>When is your birthday?</b><br><br>
@@ -29,3 +34,4 @@
     <input type="submit" value="Submit">
   </form>
 <% end %>
+</center>
