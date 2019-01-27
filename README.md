@@ -50,3 +50,13 @@ About this challenge
 This challenge is to create a web app which lets the user submit their name and birthday in a form, then presents a page either saying happy birthday if it's their birthday else how many days it will be until it's their birthday.
 
 Full details at https://github.com/makersacademy/course/blob/master/intro_to_the_web/post_challenges/birthday_app.md
+
+My method of working
+--------------
+For this challenge I used a part TDD approach but otherwise I added templating code in index.erb which I knew would give me the desired result. I would check HTML docs to make sure I was using the right syntax, test with some dummy content and then apply the real content.
+
+For the parts I did TDD I used the Sinatra error messages in the browser to guide me to fix the problem. This was especially useful for the Date object methods which I was not familiar with at the time.
+
+I defined get and post methods on the same /birthday route. I applied logic to show the different content options depending on the result of the calculation of number of days until next birthday.
+
+The hardest part of my solution was printing out the correct suffix for the date i.e. st, nd, rd, th. It was not actually required from the challenge spec to show the date in any format but I thought it would be useful and nice to see in a user friendly format.  
